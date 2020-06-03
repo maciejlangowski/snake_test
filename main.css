@@ -1,0 +1,56 @@
+body {
+    background-color: wheat;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.score {
+    border: 2px solid black;
+    width: fit-content;
+    padding: 0.5rem;
+    text-align: center;
+}
+.canvas {
+    display: block;
+    margin: 2rem auto;
+    /* width: 80%; -> na urządzeniach mobilnych można to zastosować*/ 
+    background-color: #3e3e3e;
+    border: 5px solid green;
+}
+
+.arrow__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+
+    grid-template-areas: 
+    ". arrowUp ."
+    "arrowLeft . arrowRight"
+    ". arrowDown .";
+}
+
+.arrowUp {
+    grid-area: arrowUp;
+}
+
+.arrowDown {
+    grid-area: arrowDown;
+}
+
+.arrowLeft {
+    grid-area: arrowLeft;
+}
+
+.arrowRight {
+    grid-area: arrowRight;
+}
+
+.arrow {
+    font-size: 4rem;
+    cursor: pointer;
+}
+
+/* @media (min-width: 992px) { */
