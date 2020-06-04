@@ -7,7 +7,7 @@ function Snake() {
     this.tail = [];
   
   
-    this.draw = function() {
+    this.draw = () => {
       ctx.fillStyle = "white";
       ctx.strokeStyle = "brown";
       ctx.strokeRect(this.x, this.y, scale, scale);
@@ -20,7 +20,7 @@ function Snake() {
       ctx.fillRect(this.x, this.y, scale, scale);
     }
   
-    this.update = function() {
+    this.update = () => {
       for (let i=0; i<this.tail.length - 1; i++) {
         this.tail[i] = this.tail[i+1];
       }
@@ -32,7 +32,7 @@ function Snake() {
       this.y += this.ySpeed;
     }
   
-    this.changeDirection = function(direction) {
+    this.changeDirection = (direction) => {
       if(direction === 'Up' && this.dir != "DOWN") {
           this.xSpeed = 0;
           this.ySpeed = -scale * 1;
@@ -58,7 +58,7 @@ function Snake() {
       }
     }
 
-    this.eatFood = function(fruit) {
+    this.eatFood = (fruit) => {
       if (this.x === fruit.x && this.y === fruit.y) {
         this.total++;
         foodSound.play();
@@ -66,7 +66,7 @@ function Snake() {
       }
     }
 
-    this.eatBurger = function(burger) {
+    this.eatBurger = (burger) => {
       if (this.x === burger.x && this.y === burger.y) {
         this.total--;
         loseSound.play();
@@ -74,7 +74,7 @@ function Snake() {
       }
     }
 
-    this.eatPizza = function(pizza) {
+    this.eatPizza = (pizza) => {
       if (this.x === pizza.x && this.y === pizza.y) {
         this.total--;
         loseSound.play();
@@ -82,7 +82,7 @@ function Snake() {
       }
     }
   
-    this.checkCollision = function() {
+    this.checkCollision = () => {
       for (let i = 0; i < this.tail.length; i++) {
         if (this.x === this.tail[i].x && this.y === this.tail[i].y) {
           clearInterval(game);
@@ -101,7 +101,7 @@ function Snake() {
       }
     }
 
-    this.lose = function() {
+    this.lose = () => {
       if (this.x < 0 || this.x > 19*scale || this.y < 0 || 
         this.y > 19 * scale || this.total < 0) {
         clearInterval(game);
@@ -119,7 +119,7 @@ function Snake() {
       }
     }
 
-    this.win = function() {
+    this.win = () => {
       if (this.total === 10) {
         winSound.play();
         clearInterval(game);
@@ -147,14 +147,14 @@ function Snake() {
     this.x;
     this.y;
   
-    this.pickLocation = function() {
+    this.pickLocation = () => {
       this.x = (Math.floor(Math.random() *
         columns - 1) + 1) * scale;
       this.y = (Math.floor(Math.random() *
         rows - 1) + 1) * scale;
     }
   
-    this.draw = function() {
+    this.draw = () => {
       ctx.drawImage(foodImg, this.x, this.y)
     }
   }
@@ -163,14 +163,14 @@ function Snake() {
     this.x;
     this.y;
   
-    this.pickLocation = function() {
+    this.pickLocation = () => {
       this.x = (Math.floor(Math.random() *
         columns - 1) + 1) * scale;
       this.y = (Math.floor(Math.random() *
         rows - 1) + 1) * scale;
     }
   
-    this.draw = function() {
+    this.draw = () => {
       ctx.drawImage(poisonImg, this.x, this.y)
     }
   }
@@ -179,14 +179,14 @@ function Snake() {
     this.x;
     this.y;
   
-    this.pickLocation = function() {
+    this.pickLocation = () => {
       this.x = (Math.floor(Math.random() *
         columns - 1) + 1) * scale;
       this.y = (Math.floor(Math.random() *
         rows - 1) + 1) * scale;
     }
   
-    this.draw = function() {
+    this.draw = () => {
       ctx.drawImage(poisonImg2, this.x, this.y)
     }
   }
